@@ -13,6 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.coroutineContext
 import kotlin.coroutines.coroutineContext
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -56,7 +57,7 @@ class PetScheduleController(
     }
 
     private suspend fun schedulerLoop() {
-        while (isActive) {
+        while (coroutineContext.isActive) {
             val profile = userProfileProvider()
             val now = LocalDateTime.now()
             val today = now.toLocalDate()
