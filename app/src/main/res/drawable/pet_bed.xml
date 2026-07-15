@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Valid vector placeholder for the bed layer (NIGHT_SLEEPING behavior).
+  Replace with pet_bed.png for final art — delete this XML first.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="28dp"
+    android:viewportWidth="96"
+    android:viewportHeight="28">
+    <path
+        android:fillColor="#7986CB"
+        android:pathData="M4,10 L92,10 L92,24 L4,24 Z" />
+    <path
+        android:fillColor="#5C6BC0"
+        android:pathData="M0,20 L96,20 L96,26 L0,26 Z" />
+    <path
+        android:fillColor="#C5CAE9"
+        android:pathData="M8,10 L28,10 L28,16 L8,16 Z" />
+</vector>

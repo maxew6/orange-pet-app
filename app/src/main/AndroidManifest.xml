@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Required to draw the floating pet above other applications. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Required to run the persistent overlay as a foreground service. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- Required on Android 13+ to display the foreground service notification
+         and the scheduled-greeting notifications. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- v3: required for GeminiPetBrain's REST calls (only made when the user
+         has supplied their own API key and consented to AI messages). -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.OrangePet"
+        tools:targetApi="35">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.OrangePet">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- v3: settings/onboarding screen. Launched only from MainActivity. -->
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/button_open_settings"
+            android:theme="@style/Theme.OrangePet" />
+
+        <service
+            android:name=".service.FloatingPetService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Persistent user-requested floating desktop pet overlay" />
+        </service>
+
+        <!--
+          Optional component: only becomes active if the user explicitly
+          grants "Notification access" in system settings (see MainActivity).
+          android:permission restricts binding to the system itself; no
+          app-level uses-permission is required or declared for this.
+        -->
+        <service
+            android:name=".notification.PetNotificationListenerService"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <!-- v3: fired only by our own scheduled-greeting notification's
+             deleteIntent (see PetNotificationManager); never exported. -->
+        <receiver
+            android:name=".notification.PetNotificationDismissReceiver"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

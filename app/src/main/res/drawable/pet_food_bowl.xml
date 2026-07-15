@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Valid vector placeholder for the lunch bowl (EATING behavior).
+  Replace with pet_food_bowl.png for final art — delete this XML first.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="20dp"
+    android:viewportWidth="32"
+    android:viewportHeight="20">
+    <path
+        android:fillColor="#B0BEC5"
+        android:pathData="M2,8 L30,8 L27,18 L5,18 Z" />
+    <path
+        android:fillColor="#8D6E63"
+        android:pathData="M6,9 L26,9 L24,14 L8,14 Z" />
+    <path
+        android:fillColor="#B0BEC5"
+        android:pathData="M1,6 L31,6 L31,9 L1,9 Z" />
+</vector>

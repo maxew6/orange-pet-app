@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Valid vector placeholder for the ball prop (PLAYING_BALL behavior).
+  Replace with pet_ball.png for final art — delete this XML first (see
+  README "Replacing placeholder art").
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M12,2 A10,10 0 1,1 11.99,2 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.55"
+        android:pathData="M7,7 A3,3 0 1,1 6.99,7 Z" />
+</vector>

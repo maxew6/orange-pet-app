@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OrangePet</string>
+
+    <string name="status_permission_required">Overlay permission required</string>
+    <string name="status_waiting_for_permission">Waiting for overlay permission…</string>
+    <string name="status_service_started">Pet service started</string>
+    <string name="status_permission_missing">Unable to start because permission is missing</string>
+
+    <string name="button_grant_permission">Grant overlay permission</string>
+    <string name="button_start_pet">Start OrangePet</string>
+
+    <string name="notification_channel_name">OrangePet Overlay</string>
+    <string name="notification_channel_description">Shows the running status of the floating desktop pet</string>
+    <string name="notification_title">OrangePet is running</string>
+    <string name="notification_text">The floating pet overlay is active.</string>
+
+    <string name="notification_reaction_bubble">Should I reply for that msg? \uD83D\uDCAC</string>
+
+    <string name="status_notification_access_missing">Message reactions are off (optional)</string>
+    <string name="status_notification_access_granted">Message reactions are on</string>
+    <string name="button_enable_notification_access">Enable message reactions (optional)</string>
+
+    <string name="button_open_settings">Settings</string>
+</resources>
