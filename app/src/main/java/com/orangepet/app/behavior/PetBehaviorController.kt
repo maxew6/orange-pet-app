@@ -8,13 +8,13 @@ import com.orangepet.app.service.OverlayWindowController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.coroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
+import kotlin.coroutines.coroutineContext
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import kotlin.math.PI
@@ -228,7 +228,7 @@ class PetBehaviorController(
     // ------------------------------------------------------------------
 
     private suspend fun randomLoop() {
-        while (coroutineContext.isActive) {
+        while (isActive) {
             val weights = computeWeights()
             val total = BehaviorWeights.totalWeight(weights)
             val roll = Random.nextInt(total)
@@ -429,7 +429,7 @@ class PetBehaviorController(
         val density = densityProvider()
         val hopHeightPx = 10f * density
         val steps = 20
-        while (coroutineContext.isActive) {
+        while (isActive) {
             for (i in 0 until steps) {
                 val t = i / steps.toFloat()
                 updateState { it.copy(translationY = -hopHeightPx * sin((t * PI).toFloat())) }
@@ -543,7 +543,7 @@ class PetBehaviorController(
         updateState { it.copy(behavior = PetBehavior.NIGHT_SLEEPING, rotationZ = 8f, translationY = 6f * density) }
         val frames = listOf("Z", "Zz", "Zzz")
         var index = 0
-        while (coroutineContext.isActive) {
+        while (isActive) {
             val text = frames[index % frames.size]
             index++
             updateState { it.copy(sleepText = text, sleepTextAlpha = 0f) }

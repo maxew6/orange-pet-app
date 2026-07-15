@@ -10,10 +10,10 @@ import com.orangepet.app.model.UserProfile
 import com.orangepet.app.notification.PetNotificationManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.coroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlin.coroutines.coroutineContext
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -56,7 +56,7 @@ class PetScheduleController(
     }
 
     private suspend fun schedulerLoop() {
-        while (coroutineContext.isActive) {
+        while (isActive) {
             val profile = userProfileProvider()
             val now = LocalDateTime.now()
             val today = now.toLocalDate()
